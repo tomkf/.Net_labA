@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Portfolio.Models
+namespace LabA.Models
 {
     public class Seeder
     {
@@ -14,8 +14,6 @@ namespace Portfolio.Models
             SeedData();
         }
 
-        // This could be modularized more nicely with a repository but here
-        // is a basic version of how to seed data.
         public void SeedData()
         {
             // Exit if data exists.
@@ -34,34 +32,30 @@ namespace Portfolio.Models
                 new Technology { Name = ".NET Core MVC" }
             };
 
-            //AddRange() to add multiple values.
-            db.Technologies.AddRange(seedTechnologies);
 
-            //Create a single Object to add to the database.
-            Project seedProject = new Project
+            Project[] seedProjects = new Project[]
             {
-                Title = "Phil Weier Portfolio",
-                Description = "A portfolio site for displaying my development skills."
+                new Project{ Title = "Tom Ferris", Description = "An example MVC Web App"},
+                new Project { Title = "Project A", Description = "A second project" },
+                new Project { Title = "Project B", Description = "A third project" },
+                new Project { Title = "Project 1", Description = "A fourth project" },
+                new Project { Title = "Project 2", Description = "A fifth project" }
             };
-
-            //Add() to add values one at a time.
-            db.Projects.Add(seedProject);
-
-            // Commit parent table additions to the database.
+            db.Projects.AddRange(seedProjects);
             db.SaveChanges();
 
-            /* Add items to the bridge table.
-             * Logic used is dependant on the desired seeding values
-             * I am adding one record for each seed Technology.
-             */
-            foreach (Technology seedTechnology in seedTechnologies)
+
+            foreach (Project seedProject in seedProjects)
             {
-                TechnologyProject tp = new TechnologyProject
+                foreach (Technology seedTechnology in seedTechnologies)
                 {
-                    Project = seedProject,
-                    Technology = seedTechnology
-                };
-                db.TechnologyProjects.Add(tp);
+                    TechnologyProject tp = new TechnologyProject
+                    {
+                        Project = seedProject,
+                        Technology = seedTechnology
+                    };
+                    db.TechnologyProjects.Add(tp);
+                }
             }
 
             // Commit child table additions to the database.

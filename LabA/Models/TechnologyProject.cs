@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Portfolio.Models
+namespace LabA.Models
 {
     public class TechnologyProject
     {
@@ -23,4 +23,5 @@ namespace Portfolio.Models
         public virtual Project Project { get; set; }
 
     }
+
 }

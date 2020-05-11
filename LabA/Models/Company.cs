@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace LabA.Models
 {
-    public class Technology
+    public class Company
     {
-        //Key notation to assign Primary Key
-        //Optional DatabaseGenerated Attribute
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+
+        //  public int CompanyId { get; set; }
         public string Name { get; set; }
+        public string Contact { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
 
-        //Navigation Properties
-        //Child Tables
-        public virtual ICollection<TechnologyProject> TechnologyProjects { get; set; }
+        public virtual ICollection<InterviewRequest> InterviewRequests { get; set; }
+
     }
-
 }

@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Portfolio.Models
+namespace LabA.Models
 {
+
     public class Project
     {
         //Key notation to assign Primary Key
@@ -20,3 +21,5 @@ namespace Portfolio.Models
         public virtual ICollection<TechnologyProject> TechnologyProjects { get; set; }
     }
 }
+
+

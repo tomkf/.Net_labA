@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LabA.ViewModel;
 
-namespace Portfolio.Models
+namespace LabA.Models
 {
     public class PortfolioContext : DbContext
     {
@@ -15,6 +16,9 @@ namespace Portfolio.Models
         public DbSet<Technology> Technologies { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<TechnologyProject> TechnologyProjects { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<InterviewRequest> InterviewRequests { get; set; }
+
 
         // override of parent DbContext's virtual method.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,5 +41,10 @@ namespace Portfolio.Models
               .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
         }
 
+
+        // override of parent DbContext's virtual method.
+        public DbSet<LabA.ViewModel.InterviewRequestVM> InterviewRequestVM { get; set; }
+
     }
+
 }
