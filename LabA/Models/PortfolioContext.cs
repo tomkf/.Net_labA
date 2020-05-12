@@ -41,8 +41,6 @@ namespace LabA.Models
               .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete
         }
 
-
-        // override of parent DbContext's virtual method.
         public DbSet<LabA.ViewModel.InterviewRequestVM> InterviewRequestVM { get; set; }
 
     }

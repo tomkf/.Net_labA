@@ -2,8 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200121031101_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200121031101_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200511163643_Reconfig.cs" />
+    <Compile Remove="Migrations\20200511163643_Reconfig.Designer.cs" />
+    <Compile Remove="Migrations\20200512060800_RunSeed.cs" />
+    <Compile Remove="Migrations\20200512060800_RunSeed.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -11,6 +20,5 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
-
 
 </Project>

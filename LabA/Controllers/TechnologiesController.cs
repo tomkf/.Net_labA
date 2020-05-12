@@ -12,7 +12,6 @@ namespace LabA.Controllers
     public class TechnologiesController : Controller
     {
         private readonly PortfolioContext _context;
-
         public TechnologiesController(PortfolioContext context)
         {
             _context = context;

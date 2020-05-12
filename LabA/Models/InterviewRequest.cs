@@ -12,8 +12,6 @@ namespace LabA.Models
         public int Id { get; set; }
         public DateTime Time { get; set; }
         public string Location { get; set; }
-
         public virtual Company Company { get; set; }
-
     }
 }

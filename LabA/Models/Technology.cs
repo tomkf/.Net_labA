@@ -18,5 +18,4 @@ namespace LabA.Models
         //Child Tables
         public virtual ICollection<TechnologyProject> TechnologyProjects { get; set; }
     }
-
 }

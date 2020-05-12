@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabA.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20200511163643_Reconfig")]
-    partial class Reconfig
+    [Migration("20200512061016_RunSeed")]
+    partial class RunSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

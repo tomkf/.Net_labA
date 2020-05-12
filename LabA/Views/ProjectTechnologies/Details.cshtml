@@ -1,21 +1,18 @@
 ﻿@model LabA.ViewModel.TechnologyProjectVM
 
 @{
-    ViewData["Title"] = "Technologies Used in " + Model.Project.Title;
+    ViewData["Title"] = "Details";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Details</h1>
 
 <div>
+    <h4>TechnologyProjectVM</h4>
     <hr />
-    <ol>
-        @foreach (var item in Model.Technologies)
-        {
-            <li>@item.Name</li>
-        }
-    </ol>
+    <dl class="row">
+    </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a> <br />
-    <a asp-controller="InterviewRequest" asp-action="Index">Request an Interview</a>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
 </div>

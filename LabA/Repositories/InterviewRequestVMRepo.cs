@@ -17,7 +17,6 @@ namespace LabA.Repositories
 
         public IEnumerable<InterviewRequestVM> GetAll()
         {
-
             IEnumerable<InterviewRequestVM> irList
                 = db.InterviewRequests.Select(ir => new InterviewRequestVM()
                 {
@@ -83,7 +82,6 @@ namespace LabA.Repositories
 
         private bool CompanyExist(string companyName)
         {
-
             return db.Companies.Any(cn => cn.Name == companyName);
         }
     }

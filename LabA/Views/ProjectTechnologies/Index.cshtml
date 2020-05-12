@@ -1,107 +1,29 @@
-﻿@model PaginatedList<LabA.ViewModel.TechnologyProjectVM>
-@*IEnumerable<LabA.ViewModel.TechnologyProjectVM>*@
-
-
+﻿@model IEnumerable<LabA.ViewModel.TechnologyProjectVM>
 
 @{
-    ViewData["Title"] = "Portfolio Projects";
+    ViewData["Title"] = "Index";
 }
-
-@if (ViewData["CurrentSort"].ToString() == "title_asc")
-{
-    ViewData["SortTitle"] = "title_desc";
-    ViewData["SortDescription"] = "description_asc";
-}
-else if (ViewData["CurrentSort"].ToString() == "description_asc")
-{
-    ViewData["SortDescription"] = "description_desc";
-    ViewData["SortTitle"] = "title_asc";
-}
-else
-{
-    //it's either title_desc or description_desc
-    ViewData["SortTitle"] = "title_asc";
-    ViewData["SortDescription"] = "description_asc";
-}
-
 
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Search:
-            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]"
-                   placeholder="Project or Technology..." />
-            <input type="submit" value="Search" class="btn btn-default" />
-        </p>
-    </div>
-</form>
-
-
 <table class="table">
     <thead>
         <tr>
-            @* <th><a asp-action="Index" class="glyphicon glyphicon-refresh">refresh</a></th>*@
-            <th>
-                <a asp-action="Index" asp-route-searchString="@ViewData["CurrentFilter"]"
-                   asp-route-sortOrder=@ViewData["SortTitle"]>
-                    Title
-                </a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-route-searchString="@ViewData["CurrentFilter"]"
-                   asp-route-sortOrder=@ViewData["SortDescription"]>
-                    Description
-                </a>
-            </th>
-
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-
-
-            <tr>
-                @*<td> </td>*@
-
-                <td>
-                    @Html.ActionLink(item.Project.Title, "Details", new { id = item.Project.ProjectId })
-                </td>
-
-                <td>@item.Project.Description</td>
-
-            </tr>
-
-
-
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-@* Following the list view table *@
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex - 1)"
-   asp-route-searchString="@ViewData["CurrentFilter"]"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex + 1)"
-   asp-route-searchString="@ViewData["CurrentFilter"]"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>

@@ -21,7 +21,5 @@ namespace LabA.Models
         //Parent Tables
         public virtual Technology Technology { get; set; }
         public virtual Project Project { get; set; }
-
     }
-
 }
